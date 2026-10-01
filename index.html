@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>任務一｜兩個專題研究題目</title>
+<style>
+:root{
+  --navy:#143244; --navy2:#1b4157; --teal:#2389a6; --orange:#eb8a49;
+  --text:#203744; --muted:#6c7c86; --line:#dbe5ea; --white:#fff; --bg:#f5f8fa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:
+    radial-gradient(circle at 92% 7%, rgba(35,137,166,.12) 0 120px, transparent 121px),
+    radial-gradient(circle at 97% 15%, rgba(235,138,73,.14) 0 36px, transparent 37px),
+    var(--bg);
+  color:var(--text); line-height:1.7;
+}
+.page{width:min(1120px,92vw); margin:0 auto; padding:58px 0 72px}
+.badge{
+  display:inline-block; background:var(--teal); color:#fff; padding:8px 15px;
+  border-radius:999px; font-weight:800; letter-spacing:.05em; font-size:14px;
+}
+h1{margin:18px 0 10px; color:var(--navy); font-size:clamp(36px,5vw,64px); line-height:1.12}
+.subtitle{font-size:clamp(18px,2.2vw,24px); color:var(--muted); margin:0}
+.rule{width:130px;height:5px;background:var(--orange);border-radius:99px;margin:24px 0 34px}
+.intro,.card{background:var(--white);border:1px solid var(--line);box-shadow:0 10px 28px rgba(20,50,68,.06)}
+.intro{border-radius:22px;padding:24px 28px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{border-radius:24px;overflow:hidden}
+.card-head{padding:25px 28px 18px;border-bottom:1px solid var(--line)}
+.number{
+  width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;font-size:18px;margin-bottom:18px
+}
+.one{background:var(--teal)} .two{background:var(--orange)}
+.card h2{margin:0;color:var(--navy);font-size:29px;line-height:1.35}
+.eng{margin-top:8px;color:var(--muted);font-size:15px;font-weight:700}
+.body{padding:24px 28px 30px}
+.label{font-size:14px;font-weight:900;letter-spacing:.08em;color:var(--teal);margin:18px 0 7px}
+.label:first-child{margin-top:0}
+.question{font-size:20px;font-weight:800;color:var(--navy2);margin:0}
+.flow{margin-top:12px;border-radius:16px;padding:14px 16px;font-weight:800;text-align:center}
+.flow.teal{background:#eef7fa;color:#176b81}
+.flow.orange{background:#fff5ee;color:#b75d24}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.chip{
+  background:#f2f6f8;border:1px solid #e0e8ec;color:#405864;border-radius:999px;
+  padding:6px 11px;font-size:14px;font-weight:700
+}
+.note{
+  margin-top:28px;background:#fffaf6;border:1px solid #f1d3bd;border-radius:18px;
+  padding:20px 24px;color:#5f4d42
+}
+.note strong{color:#bd642c}
+footer{margin-top:36px;text-align:center;color:#8a989f;font-size:14px}
+@media (max-width:850px){.grid{grid-template-columns:1fr}.page{padding-top:38px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="badge">任務一</div>
+  <h1>設計 2 個專題研究題目</h1>
+  <p class="subtitle">以 AREMOS 經濟統計資料庫可以取得的台灣總體經濟資料為基礎。</p>
+  <div class="rule"></div>
+
+  <section class="intro">
+    <strong>研究方向：</strong>
+    選擇經濟學理論清楚、資料容易取得，之後也能用 Python 畫圖與做基本相關分析的題目。
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <div class="card-head">
+        <div class="number one">01</div>
+        <h2>台灣通貨膨脹與失業率的關係</h2>
+        <div class="eng">Phillips Curve in Taiwan</div>
+      </div>
+      <div class="body">
+        <div class="label">研究問題</div>
+        <p class="question">當台灣通貨膨脹率上升時，失業率是否會下降？</p>
+
+        <div class="label">經濟學概念</div>
+        <div class="flow teal">景氣擴張 → 勞動需求增加 → 失業率下降 → 工資與物價壓力上升</div>
+
+        <div class="label">建議 AREMOS 關鍵字</div>
+        <div class="chips">
+          <span class="chip">CPI</span>
+          <span class="chip">消費者物價指數</span>
+          <span class="chip">失業率</span>
+          <span class="chip">年增率</span>
+        </div>
+
+        <div class="label">建議資料形式</div>
+        <p>可使用月資料或年資料。CPI 建議轉成「CPI 年增率」作為通膨率，再與失業率比較。</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div class="number two">02</div>
+        <h2>台灣 M2 貨幣供給與通貨膨脹的關係</h2>
+        <div class="eng">Money Supply and Inflation in Taiwan</div>
+      </div>
+      <div class="body">
+        <div class="label">研究問題</div>
+        <p class="question">M2 貨幣供給成長加快後，台灣 CPI 通膨率是否也會提高？</p>
+
+        <div class="label">經濟學概念</div>
+        <div class="flow orange">M2 成長 → 市場流動性增加 → 消費與投資需求增加 → 物價上升</div>
+
+        <div class="label">建議 AREMOS 關鍵字</div>
+        <div class="chips">
+          <span class="chip">M2</span>
+          <span class="chip">貨幣供給</span>
+          <span class="chip">CPI</span>
+          <span class="chip">消費者物價指數</span>
+        </div>
+
+        <div class="label">建議資料形式</div>
+        <p>建議使用月資料，將 M2 與 CPI 都轉成年增率，之後可再觀察 M2 是否領先 CPI 變動。</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="note">
+    <strong>目前只完成任務一：</strong>
+    這一頁先確定兩個研究題目與資料方向；研究假說、圖表分析與 Python 程式碼暫時不放進來。
+  </section>
+
+  <footer>AREMOS 經濟資料分析小報告｜任務一</footer>
+</main>
+</body>
+</html>
