@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>台灣經濟成長與失業率</title>
+  <style>
+    :root{
+      --navy:#163244;
+      --navy-2:#203f52;
+      --teal:#2b91ad;
+      --teal-soft:#dceef3;
+      --orange:#e98a48;
+      --orange-soft:#f8dfcf;
+      --white:#ffffff;
+      --muted:#b8c6ce;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+
+    body{
+      background:#0f2938;
+      color:var(--white);
+    }
+
+    .page{
+      position:relative;
+      min-height:100vh;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 92% 78%, rgba(73,128,153,.30) 0 150px, transparent 151px),
+        radial-gradient(circle at 95% 8%, rgba(43,145,173,.15) 0 95px, transparent 96px),
+        linear-gradient(180deg,#163244 0%,#132f40 100%);
+    }
+
+    .top-line{
+      height:10px;
+      background:var(--orange);
+      position:absolute;
+      inset:0 0 auto 0;
+    }
+
+    .bottom-line{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:10px;
+      background:var(--teal);
+    }
+
+    .container{
+      width:min(1220px,92vw);
+      margin:0 auto;
+      padding:76px 0 58px;
+      position:relative;
+      z-index:2;
+    }
+
+    .tag{
+      display:inline-block;
+      background:var(--teal);
+      padding:11px 20px;
+      border-radius:8px;
+      font-weight:800;
+      letter-spacing:.04em;
+      font-family:Georgia,"Times New Roman",serif;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.3fr) minmax(360px,.7fr);
+      gap:56px;
+      align-items:center;
+      margin-top:52px;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,78px);
+      line-height:1.06;
+      margin:0;
+      letter-spacing:-.04em;
+      font-weight:900;
+    }
+
+    .sub{
+      font-size:clamp(24px,3vw,39px);
+      color:#c9d7de;
+      margin:18px 0 30px;
+      font-weight:800;
+      font-family:Georgia,"Times New Roman","Noto Serif TC",serif;
+    }
+
+    .desc{
+      max-width:720px;
+      color:#d3dde2;
+      font-size:20px;
+      line-height:1.9;
+      margin:0;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.96);
+      color:var(--navy);
+      border-radius:30px;
+      padding:28px 26px;
+      min-height:236px;
+      box-shadow:0 18px 42px rgba(0,0,0,.18);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .stat:nth-child(2){margin-top:92px}
+
+    .year{
+      font-family:Georgia,"Times New Roman",serif;
+      color:#61717b;
+      font-weight:800;
+      font-size:18px;
+      margin-bottom:15px;
+    }
+
+    .growth{
+      font-size:43px;
+      font-weight:900;
+      line-height:1;
+      color:#137c9d;
+      font-family:Georgia,"Times New Roman",serif;
+    }
+
+    .label{
+      color:#89959b;
+      margin:10px 0 12px;
+      font-size:14px;
+    }
+
+    .unemp{
+      font-size:32px;
+      font-weight:900;
+      line-height:1;
+      color:var(--orange);
+      font-family:Georgia,"Times New Roman",serif;
+    }
+
+    .meta{
+      margin-top:76px;
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:flex-end;
+      flex-wrap:wrap;
+    }
+
+    .author{
+      font-weight:800;
+      font-size:18px;
+      margin-bottom:8px;
+    }
+
+    .school{
+      color:#9fb1ba;
+      font-size:15px;
+    }
+
+    .research-note{
+      border-left:4px solid var(--orange);
+      padding:14px 18px;
+      max-width:540px;
+      background:rgba(255,255,255,.045);
+      border-radius:0 14px 14px 0;
+      color:#c9d4da;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .circle{
+      position:absolute;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      background:rgba(65,124,150,.30);
+      right:-86px;
+      bottom:50px;
+      z-index:1;
+    }
+
+    .circle.small{
+      width:110px;
+      height:110px;
+      right:120px;
+      top:34px;
+      bottom:auto;
+      background:rgba(233,138,72,.13);
+    }
+
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;gap:40px}
+      .cards{max-width:640px}
+      .stat:nth-child(2){margin-top:0}
+      .meta{margin-top:48px}
+    }
+
+    @media(max-width:560px){
+      .container{padding-top:56px}
+      .cards{grid-template-columns:1fr}
+      .stat{min-height:200px}
+      h1{font-size:46px}
+      .sub{font-size:25px}
+      .desc{font-size:17px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="top-line"></div>
+    <div class="circle"></div>
+    <div class="circle small"></div>
+
+    <section class="container">
+      <div class="tag">AREMOS × Python</div>
+
+      <div class="hero-grid">
+        <div>
+          <h1>台灣經濟成長與失業率</h1>
+          <div class="sub">Okun’s Law 在台灣成立嗎？</div>
+          <p class="desc">
+            用 2000–2021 年年度資料觀察：當經濟成長加快時，失業率是否會下降？
+            本研究將以台灣 GDP 成長率與失業率資料作為基礎，檢視兩者之間是否存在符合
+            Okun’s Law 所預期的負向關係。
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="stat">
+            <div class="year">2009</div>
+            <div class="growth">−1.6%</div>
+            <div class="label">經濟成長率</div>
+            <div class="unemp">5.9%</div>
+            <div class="label">失業率</div>
+          </article>
+
+          <article class="stat">
+            <div class="year">2010</div>
+            <div class="growth">10.2%</div>
+            <div class="label">經濟成長率</div>
+            <div class="unemp">5.2%</div>
+            <div class="label">失業率</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div>
+          <div class="author">研究者｜林祺原</div>
+          <div class="school">淡江大學經濟學系｜經濟資料分析小報告</div>
+        </div>
+
+        <div class="research-note">
+          研究核心：比較經濟成長率與失業率的變動方向，並進一步使用散佈圖、相關係數與基本迴歸概念檢查兩者關係。相關不等於因果。
+        </div>
+      </div>
+    </section>
+
+    <div class="bottom-line"></div>
+  </main>
+</body>
+</html>
